@@ -84,23 +84,23 @@ class PubMedScraper:
         return pub_date
 
 
-# Test Scraper
-if __name__ == "__main__":
-    scraper = PubMedScraper()
+# # Test Scraper
+# if __name__ == "__main__":
+#     scraper = PubMedScraper()
 
-    # Example query
-    query = "covid"
-    pubmed_ids = scraper.search_papers(query)
+#     # Example query
+#     query = "covid"
+#     pubmed_ids = scraper.search_papers(query)
 
-    if not pubmed_ids:
-        print("No papers found.")
-    else:
-        for pubmed_id in pubmed_ids[:5]:  # Limit to first 5 papers for testing
-            print(f"\nScraping PubMed ID: {pubmed_id}")
-            title, abstract, details = scraper.scrape_paper_data(pubmed_id)
-            if title:
-                print(f"Title: {title}")
-                print(f"Abstract: {abstract}")
-                print(f"Authors: {details['authors']}")
-                print(f"Journal: {details['journal']}")
-                print(f"Publication Date: {details['publication_date']}")
+#     if not pubmed_ids:
+#         print("No papers found.")
+#     else:
+#         for pubmed_id in pubmed_ids[:5]:  # Limit to first 5 papers for testing
+#             print(f"\nScraping PubMed ID: {pubmed_id}")
+#             title, abstract, details = scraper.scrape_paper_data(pubmed_id)
+#             if title:
+#                 print(f"Title: {title}")
+#                 print(f"Abstract: {abstract}")
+#                 print(f"Authors: {details['authors']}")
+#                 print(f"Journal: {details['journal']}")
+#                 print(f"Publication Date: {details['publication_date']}")
