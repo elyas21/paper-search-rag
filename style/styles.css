@@ -1,0 +1,44 @@
+body {
+    background-color: #121212;
+    color: white;
+}
+
+.form-control {
+    background-color: #333;
+    color: white;
+    border-color: #555;
+}
+
+.form-control:focus {
+    background-color: #444;
+    border-color: #777;
+    color: white;
+}
+
+.btn-primary {
+    background-color: #444;
+    border-color: #666;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #555;
+    border-color: #777;
+}
+
+.subheading {
+    font-size: 1.2rem;
+    color: #aaa;
+    margin-bottom: 20px;
+}
+
+.idea-button {
+    background-color: #666;
+    border-color: #888;
+    color: white;
+}
+
+.idea-button:hover {
+    background-color: #777;
+    border-color: #999;
+}

@@ -1,0 +1,79 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Research Paper Assistant</title>
+        <script src="{{ url_for('static', filename='js/jquery-3.6.0.min.js') }}"></script>
+        <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='img/favicon.ico') }}" />
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+        <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet" />
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.min.js"></script>
+    </head>
+    <body id="page-top">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+            <a class="navbar-brand js-scroll-trigger" href="#page-top">
+                <span class="d-block d-lg-none">Research Paper Assistant</span>
+                <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="{{ url_for('static', filename='assets/img/profile.png') }}" alt="..." />
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#search">Search Papers</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#results">Search Results</a></li>
+              </ul>
+            </div>
+        </nav>
+
+        <div class="container-fluid p-0">
+            <!-- Search Section -->
+            <section class="resume-section" id="search">
+                <div class="resume-section-content">
+                    <h1 class="mb-0">Research <span class="text-primary">Assistant</span></h1>
+                    <div class="subheading mb-5">Find and Summarize Research Papers</div>
+                    <p class="lead mb-5">Enter the paper title or keywords, and I’ll help you find the most relevant articles. Upload a paper, and I’ll summarize the key points for you!</p>
+                    <form id="search-form" method="POST">
+                        <div class="mb-3">
+                            <input type="text" class="form-control" id="query" name="search_query" placeholder="Enter paper title or keywords" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Search Papers</button>
+                    </form>
+                </div>
+            </section>
+
+            <hr class="m-0" />
+
+            <!-- Search Results Section -->
+            <section class="resume-section" id="results">
+                <div class="resume-section-content">
+                    {% if papers %}
+                    <h2 class="mb-5">Search Results "{{ search_query }}"</h2>
+                    <div id="papers-list">
+                       
+                            {% for paper in papers %}
+                                <div class="paper">
+                                    <h4>{{ paper[0] }}</h4>
+                                    <p><strong>Abstract:</strong>{{ paper[1] }}</p>
+                                    <p><strong>Journal:</strong> {{ paper[2]['journal'] }} | <strong>Published:</strong> {{ paper[2]['publication_date'] }}</p>
+                                </div>
+                            {% endfor %}
+                            <h3 class="mb-0">Combined Summary</h3>
+                    <p id="summarized-abstract"> {{ summary }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </section>
+
+            <hr class="m-0" />
+        </div>
+
+        
+    </body>
+</html>
